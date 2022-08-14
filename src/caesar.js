@@ -7,14 +7,16 @@ const caesarModule = (function () {
   // you can add any code you want within this function scope
     const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-    function caesar(input, shift, encode = true) {
+//If the shift value isn't present, equal to 0, less than -25, or greater than 25, the function should return false.
+    function caesar(input, shift, encode = true) { 
       const message = [];
       input = input.toLowerCase();
       if (shift === 0 || shift < -25 || shift > 25) {
         return false;
       } //error handling returning false
       if (!encode) {
-        shift = -shift;
+        shift = -shift; //shift refers to how much each letter is "shifted" by. A positive number means shifting to the right whereas a negative number means shifting to the left 
+
       }
     for (let i = 0; i < input.length; i++) {
         let character = input.charCodeAt(i);
