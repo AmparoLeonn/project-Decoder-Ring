@@ -7,20 +7,20 @@
 const substitutionModule = (function () {
   let realAlphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
-  function substitution(input, alphabet, encode = true) {
+  function substitution(input, alphabet, encode = true) { //encode refers to whether you should encode or decode the message. By default it is set to true.
     if (!alphabet) return false;
-    if (alphabet.length != 26) return false;
+    if (alphabet.length != 26) return false; //All the characters in the alphabet parameter must be unique. Otherwise, it should return false.
     for (let i = 0; i < input.length; i++) {
       if (alphabet.indexOf(input[i]) != alphabet.lastIndexOf(input[i]))
         return false;
-    }
+    }    
     if (encode) return subEncode(input, alphabet);
     return subDecode(input, alphabet);
   }
 
   function subEncode(input, alphabet) {
     let codeMessage = [];
-    input = input.toLowerCase();
+    input = input.toLowerCase();     //input refers to the inputted text to be encoded or decoded
     for (let i = 0; i < input.length; i++) {
       let codeIndex = realAlphabet.indexOf(input[i]);
       let codeLetter = alphabet[codeIndex];
